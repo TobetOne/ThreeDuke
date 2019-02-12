@@ -5,7 +5,7 @@
 在使用此网页工具之前，请仔细阅读以下说明。你可以根据如下说明，自行开发程序验证。
 ## 开奖结果计算
   1. 根据游戏数据生成随机种子,并签名：
-    seed = GameId+BetPlayersCount+LastBetTime;
+    seed = GameId+BetPlayersCount+BetTotalAmount+LastBetTime;
     seed_sign = sign(seed)
   2. 对随机种子hash（SH256）运算，结果转换为16进制
     hash_hex = hex(sha256(seed_sign))
@@ -48,9 +48,10 @@ midResult：player[2]
 botResult：player[3]
 ```
 ## 随机因子说明
-   seed = GameId+BetPlayersCount+LastBetTime
+   seed = GameId+BetPlayersCount+BetTotalAmount+LastBetTime
 *  GameId:游戏ID
 *  BetPlayersCount:参与游戏玩家个数
+*  BetTotalAmount:投注总额
 *  LastBetTime:最后一位投注的玩家的投注时间
 ## 签名验证
    验证签名使用Tobet的公钥（EOS6CG8VwJ8G1iFn6x781PMojmfD7i4kqqzsgd1AjWwAaEz35QGhn），对seed_sign进行ecc签名验证，验证结果通过即可证明随机种子未被篡改。

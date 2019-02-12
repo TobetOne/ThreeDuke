@@ -185,7 +185,7 @@
         }
 
     }
-    
+
     function hexToInt(hex) {
         var chs = hex.toLowerCase().toCharArray();
         if (chs.length < 8) {
@@ -227,8 +227,6 @@
         var one = hexToInt(hash.toString().substring(0, 6));
         var two = hexToInt(hash.toString().substring(6, 12));
         var three = hexToInt(hash.toString().substring(12, 18));
-        // var four = hexToInt(hash.toString().substring(18, 24));
-        // var five = hexToInt(hash.toString().substring(24, 30));
         var bout = [one, two, three];
         for (var i = 0; i < bout.length; i++) {
             for (var j = 0; j < player.length; j++) {
@@ -236,22 +234,22 @@
                 poker.splice(bout[i] % poker.length, 1);
             }
         }
-            //庄家
-            for (var r = 0; r < player[0].length; r++) {
-                $("#bank"+r).attr('src', './poke/'+player[0][r]+'.png');
-            }
-            //上门
-            for (var r = 0; r < player[1].length; r++) {
-                $("#top" + r).attr('src', './poke/' + player[1][r] + '.png');
-            }
-           //天门
-            for (var r = 0; r < player[2].length; r++) {
-                $("#mid" + r).attr('src', './poke/' + player[2][r] + '.png');
-            }
-            //下门
-            for (var r = 0; r < player[3].length; r++) {
-                $("#bot" + r).attr('src', './poke/' + player[3][r] + '.png');
-            }
+        //庄家
+        for (var r = 0; r < player[0].length; r++) {
+            $("#bank"+r).attr('src', './poke/'+player[0][r]+'.png');
+        }
+        //上门
+        for (var r = 0; r < player[1].length; r++) {
+            $("#top" + r).attr('src', './poke/' + player[1][r] + '.png');
+        }
+        //天门
+        for (var r = 0; r < player[2].length; r++) {
+            $("#mid" + r).attr('src', './poke/' + player[2][r] + '.png');
+        }
+        //下门
+        for (var r = 0; r < player[3].length; r++) {
+            $("#bot" + r).attr('src', './poke/' + player[3][r] + '.png');
+        }
 
 
     }
@@ -276,12 +274,12 @@
         <form id="gameParam">
             <div class="inputDiv">
                 <p class="inputText">玩家种子（Player Seed）:</p>
-                <p class="textS">GameId+BetPlayersCount+LastBetTime</p>
+                <p class="textS">GameId+BetPlayersCount+BetTotalAmount+LastBetTime</p>
                 <input class="verInpt" id="playerSeed"/>
             </div>
             <div class="inputDiv">
                 <p class="inputText">玩家签名种子（Player Signature）:</p>
-                <p class="textS">Sign(GameId+BetPlayersCount+LastBetTime)</p>
+                <p class="textS">Sign(GameId+BetPlayersCount+BetTotalAmount+LastBetTime)</p>
                 <input class="verInpt" id="playerSignature"/>
             </div>
 
@@ -297,51 +295,51 @@
                             <td width="35%" >玩家（Player）</td>
                             <td >结果（Result）</td>
                         </tr>
-                       <tr>
-                           <td width="35%">庄家（Banker）</td>
-                           <td>
-                               <img id="bank0" class='cardImg' src="" alt="" style='vertical-align:bottom'>
-                               <img id="bank1" class='cardImg' src="" alt="" style='vertical-align:bottom'>
-                               <img id="bank2" class='cardImg' src="" alt="" style='vertical-align:bottom'>
-                               <img id="bank3" class='cardImg' src="" alt="" style='vertical-align:bottom'>
-                               <img id="bank4" class='cardImg' src="" alt="" style='vertical-align:bottom'>
-                           </td>
-                       </tr>
-                       <tr>
-                           <td width="30%">上门（Top）</td>
-                           <td> <img id="top0" class='cardImg' src="" alt="" style='vertical-align:bottom'>
-                               <img id="top1" class='cardImg' src="" alt="" style='vertical-align:bottom'>
-                               <img id="top2" class='cardImg' src="" alt="" style='vertical-align:bottom'>
-                               <img id="top3" class='cardImg' src="" alt="" style='vertical-align:bottom'>
-                               <img id="top4" class='cardImg' src="" alt="" style='vertical-align:bottom'>
-                           </td>
-                       </tr>
-                       <tr>
-                           <td width="30%">天门（Mid）</td>
-                           <td>
-                               <img id="mid0" class='cardImg' src="" alt="" style='vertical-align:bottom'>
-                               <img id="mid1" class='cardImg' src="" alt="" style='vertical-align:bottom'>
-                               <img id="mid2" class='cardImg' src="" alt="" style='vertical-align:bottom'>
-                               <img id="mid3" class='cardImg' src="" alt="" style='vertical-align:bottom'>
-                               <img id="mid4" class='cardImg' src="" alt="" style='vertical-align:bottom'>
-                           </td>
-                       </tr>
-                       <tr>
-                           <td width="30%">下门（Bot）</td>
-                           <td>
-                               <img id="bot0" class='cardImg' src="" alt="" style='vertical-align:bottom'>
-                               <img id="bot1" class='cardImg' src="" alt="" style='vertical-align:bottom'>
-                               <img id="bot2" class='cardImg' src="" alt="" style='vertical-align:bottom'>
-                               <img id="bot3" class='cardImg' src="" alt="" style='vertical-align:bottom'>
-                               <img id="bot4" class='cardImg' src="" alt="" style='vertical-align:bottom'>
-                           </td>
-                       </tr>
+                        <tr>
+                            <td width="35%">庄家（Banker）</td>
+                            <td>
+                                <img id="bank0" class='cardImg' src="" alt="" style='vertical-align:bottom'>
+                                <img id="bank1" class='cardImg' src="" alt="" style='vertical-align:bottom'>
+                                <img id="bank2" class='cardImg' src="" alt="" style='vertical-align:bottom'>
+                                <img id="bank3" class='cardImg' src="" alt="" style='vertical-align:bottom'>
+                                <img id="bank4" class='cardImg' src="" alt="" style='vertical-align:bottom'>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="30%">上门（Top）</td>
+                            <td> <img id="top0" class='cardImg' src="" alt="" style='vertical-align:bottom'>
+                                <img id="top1" class='cardImg' src="" alt="" style='vertical-align:bottom'>
+                                <img id="top2" class='cardImg' src="" alt="" style='vertical-align:bottom'>
+                                <img id="top3" class='cardImg' src="" alt="" style='vertical-align:bottom'>
+                                <img id="top4" class='cardImg' src="" alt="" style='vertical-align:bottom'>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="30%">天门（Mid）</td>
+                            <td>
+                                <img id="mid0" class='cardImg' src="" alt="" style='vertical-align:bottom'>
+                                <img id="mid1" class='cardImg' src="" alt="" style='vertical-align:bottom'>
+                                <img id="mid2" class='cardImg' src="" alt="" style='vertical-align:bottom'>
+                                <img id="mid3" class='cardImg' src="" alt="" style='vertical-align:bottom'>
+                                <img id="mid4" class='cardImg' src="" alt="" style='vertical-align:bottom'>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="30%">下门（Bot）</td>
+                            <td>
+                                <img id="bot0" class='cardImg' src="" alt="" style='vertical-align:bottom'>
+                                <img id="bot1" class='cardImg' src="" alt="" style='vertical-align:bottom'>
+                                <img id="bot2" class='cardImg' src="" alt="" style='vertical-align:bottom'>
+                                <img id="bot3" class='cardImg' src="" alt="" style='vertical-align:bottom'>
+                                <img id="bot4" class='cardImg' src="" alt="" style='vertical-align:bottom'>
+                            </td>
+                        </tr>
                     </table>
                 </div>
             </div>
 
             <div class="inputDiv">
-               <p class="formula title-p" onclick="showDivInfo()">公式（Show Formula）： </p>
+                <p class="formula title-p" onclick="showDivInfo()">公式（Show Formula）： </p>
             </div>
             <div class="inputDiv" id="showDiv">
                 <pre class="formula">
